@@ -9,7 +9,7 @@ public:
 
 	virtual void AddObserver(IObserver* observer) = 0;
 	virtual void RemoveObserver(IObserver* observer) = 0;
-	virtual void Notify() = 0;
+	virtual void Notify(int idEvent) = 0;
 
 protected :
 	std::vector<IObserver*> observers;

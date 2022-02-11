@@ -188,5 +188,5 @@ void Game::RemoveAsteroid(Asteroid* asteroid) {
 }
 
 void Game::CreateAsteroid() {
-	//new Asteroid();
+	new Asteroid();
 }
