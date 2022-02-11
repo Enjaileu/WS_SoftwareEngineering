@@ -7,7 +7,6 @@
 #include "BGSpriteComponent.h"
 #include "Asteroid.h"
 #include "Ship.h"
-#include "Score.h"
 
 bool Game::Initialize()
 {
@@ -59,6 +58,9 @@ void Game::Load() {
 	for (int i = 0; i < asteroidNumber; ++i) {
 		CreateAsteroid();
 	}
+
+	//set score
+	//score = 0;
 }
 
 void Game::Unload() {

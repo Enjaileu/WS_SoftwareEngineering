@@ -2,7 +2,7 @@
 #include "Log.h"
 #include <string>
 
-Score::Score() {
+Score::Score(){
 	scorePts = 0;
 }
 
@@ -12,8 +12,8 @@ void Score::OnNotify(int idEvent) {
 	switch (idEvent) {
 	case 0:
 		scorePts += 100;
+		Log::info(std::to_string(scorePts));
+		break;
 	}
-	
-	std::string info = std::to_string(scorePts);
-	Log::info(info);
+
 }

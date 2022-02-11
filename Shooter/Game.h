@@ -62,6 +62,5 @@ private:
 	vector<Asteroid*> asteroids;
 
 	Score score;
-
 };
 

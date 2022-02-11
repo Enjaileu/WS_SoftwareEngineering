@@ -8,9 +8,7 @@ public:
     ~Score();
 
     void OnNotify(int idEvent);
-    int SetScore(int value) { scorePts = value; }
 
 private:
     int scorePts;
 };
-

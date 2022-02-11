@@ -6,7 +6,6 @@
 #include "MoveComponent.h"
 #include "Assets.h"
 #include "Game.h"
-#include "Score.h"
 
 Asteroid::Asteroid() : Actor(), collision{ nullptr } {
 	Vector2 randPos = Random::GetVector(Vector2::zero, Vector2(WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -26,7 +25,6 @@ Asteroid::Asteroid() : Actor(), collision{ nullptr } {
 
 Asteroid::~Asteroid() {
 	GetGame().RemoveAsteroid(this);
-	Notify(0);
 	GetGame().CreateAsteroid(); 
 }
 

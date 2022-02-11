@@ -29,6 +29,7 @@ void Laser::UpdateActor(float dt) {
 			if (IsIntersect(*collision, asteroid->GetCollision())) {
 				SetState(Actor::ActorState::Dead);
 				asteroid->SetState(ActorState::Dead);
+				asteroid->Notify(0);
 				break;
 			}
 		}

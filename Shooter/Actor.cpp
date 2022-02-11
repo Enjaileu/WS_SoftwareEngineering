@@ -70,6 +70,4 @@ void Actor::ProcessInput(const Uint8* keyState) {
 	}
 }
 
-void Actor::ActorInput(const Uint8* keyState) {
-
-}
+void Actor::ActorInput(const Uint8* keyState) {}
