@@ -1,6 +1,7 @@
 #pragma once
 #include "Actor.h"
 #include <SDL_stdinc.h>
+#include "CircleCollisionComponent.h"
 
 class Ship : public Actor
 {
@@ -12,5 +13,9 @@ public:
 
 private:
 	float laserCooldown;
+	CircleCollisionComponent* collision;
+	int lifePts;
+	float LifeCooldown;
+	bool vulnerability;
 };
 

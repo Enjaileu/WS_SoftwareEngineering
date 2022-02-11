@@ -5,6 +5,7 @@
 #include "Maths.h"
 #include "Laser.h"
 #include "Log.h"
+#include "Game.h"
 
 Ship::Ship() : Actor() {
 
@@ -19,6 +20,13 @@ Ship::Ship() : Actor() {
 	InputComponent* ic = new InputComponent(this);
 	ic->SetMaxAngularSpeed(Maths::twoPi);
 	ic->SetMaxForwardSpeed(300.f);
+
+	collision = new CircleCollisionComponent(this);
+	collision->SetRadius(40.f);
+
+	lifePts = 3;
+	LifeCooldown = 3.0f;
+	vulnerability = true;
 }
 
 void Ship::ActorInput(const Uint8* keyState) {
@@ -31,6 +39,31 @@ void Ship::ActorInput(const Uint8* keyState) {
 }
 
 void Ship::UpdateActor(float dt) {
-	//Log::info("Ship.UdpatdeActor() is running.");
 	laserCooldown -= dt;
+	if (vulnerability == false) {
+		LifeCooldown -= dt;
+		if (LifeCooldown <= 0) {
+			vulnerability = true;
+			LifeCooldown = 3.0f;
+		}
+	}
+
+	//collision
+	if (vulnerability == true) {
+		auto asteroids = GetGame().GetAsteroids();
+		for (auto asteroid : asteroids) {
+			if (IsIntersect(*collision, asteroid->GetCollision())) {
+				lifePts--;
+				vulnerability = false;
+				Log::info("-1 vie");
+				if (lifePts <= 0) {
+					SetState(Actor::ActorState::Dead);
+					asteroid->SetState(ActorState::Dead);
+					GetGame().Unload();
+					GetGame().Close();
+				}
+				break;
+			}
+		}
+	}
 }
